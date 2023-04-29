@@ -27,6 +27,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+for (const component of Object.keys(Vue.options.components)) {
+    for (const el of document.querySelectorAll(component)) {
+        new Vue({
+            el: el,
+            name: component,
+        });
+    }
+}

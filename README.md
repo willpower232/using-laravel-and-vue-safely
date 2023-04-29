@@ -12,6 +12,16 @@ I've included a simple bit of math and popping up the `document.cookie` value wh
 
 Back in 2018, [Taylors response](https://medium.com/@taylorotwell/js-frameworks-server-side-rendering-and-xss-722805009892) was to add `v-pre` [to the auth scaffolding](https://github.com/laravel/framework/commit/98fdbb098cf52a74441fe949be121c18e3dbbe6a) I haven't used here. Whilst this does fix the problem, I would argue that it isn't a great solution in that it requires you to remember to add it literally anywhere unsanitised user input is in the page and omitting the `v-pre` would require extensive testing to detect.
 
+## The Solution
+
+A much harder to forget solution is creating separate Vue applications for each component in the page. This means that any `{{ }}` avoiding Blade rendering are not handled by Vue and are just output to the user.
+
+You may think it is possible to filter out `{{ }}` but the complexity of ensuring it cannot be evaded with a more targeted attack means the previous solution makes more sense.
+
+I've added some props to the components to guarantee they still function as intended. Some attempts at fixing the problem for Vue3 broke the props so this is also important.
+
+Kudos to my pal [Josh](https://github.com/Josh-G) for figuring all this out.
+
 ## More Reading
 
 - https://github.com/laravel/framework/issues/15340

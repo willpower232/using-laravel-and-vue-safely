@@ -32,7 +32,10 @@
             {{ $test }}
             {{ $test2 }}
 
-            <example-component></example-component>
+            <example-component
+                message="howdy @{{ 10 + 10 }}"
+                :was-json='@json(["hello" => "there"])'
+            ></example-component>
         </div>
 
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
