@@ -19,8 +19,22 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
+        <link rel="stylesheet" href="{{ mix('/css/app.css') }}" />
     </head>
     <body class="antialiased">
+        <div id="app">
+            @php
+                $test = '{{ 10 + 10 }}';
+                $test2 = "{{constructor.constructor('prompt(document.cookie)')()}}";
+            @endphp
+
+            {{ $test }}
+            {{ $test2 }}
+
+            <example-component></example-component>
+        </div>
+
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -128,5 +142,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
